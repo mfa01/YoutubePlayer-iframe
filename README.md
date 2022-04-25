@@ -68,7 +68,7 @@ Add to info plist
     func stopVideo()
     func pauseVideo()
     func getIframe()
-    ```
+
     
     
     # for referance https://developers.google.com/youtube/iframe_api_reference
