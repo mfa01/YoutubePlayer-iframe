@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     }
     
     func searchForPodcastInYoutube(text: String) {
-        let vc = YPlayerWebViewViewController(nibName: "WebViewViewController", bundle: nil)
+        let vc = YPlayerWebViewViewController.initPlayer(delegate: nil)
         vc.webviewType = .searching
         self.present(vc, animated: true) {
             var c = URLComponents(string: "https://www.youtube.com/results")
@@ -42,8 +42,7 @@ class ViewController: UIViewController {
     
 
     @IBAction func openVideoWithId(_ sender: UIButton) {
-        let vc = YPlayerWebViewViewController(nibName: "YPlayerWebViewViewController", bundle: nil)
-        vc.delegate = self
+        let vc = YPlayerWebViewViewController.initPlayer(delegate: self)
         
         var videoPresenetation = VideoPlayerPresentaion(videoId: "668nUCeBHyY")
         videoPresenetation.autoplay = 0
@@ -55,24 +54,17 @@ class ViewController: UIViewController {
         videoPresenetation.rel = 0
         videoPresenetation.color = .white
         videoPresenetation.fs = 1
+        
         self.present(vc, animated: true) {
             vc.openPageWithVideoId(presentation: videoPresenetation)
         }
         
-        Timer.scheduledTimer(withTimeInterval: 8, repeats: false) { _ in
-            vc.mute()
+        vc.mute()
+        vc.isMuted { muted in
+            print("ismuted: \(muted)")
         }
-        
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
-            vc.isMuted { muted in
-                print("ismuted: \(muted)")
-            }
-        }
-        
-        Timer.scheduledTimer(withTimeInterval: 9, repeats: false) { _ in
-            vc.isMuted { muted in
-                print("ismuted: \(muted)")
-            }
+        vc.getPlayerState { state in
+            print(state)
         }
     }
 }

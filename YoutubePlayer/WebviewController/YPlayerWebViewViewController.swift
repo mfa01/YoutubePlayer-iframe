@@ -15,6 +15,12 @@ protocol YPlayerWebViewViewControllerDelegate {
 
 class YPlayerWebViewViewController: YPlayerBaseViewController {
 
+    static func initPlayer(delegate: YPlayerWebViewViewControllerDelegate?) -> YPlayerWebViewViewController {
+        let vc = YPlayerWebViewViewController(nibName: "YPlayerWebViewViewController", bundle: nil)
+        vc.delegate = delegate
+        return vc
+    }
+    
     enum WebViewType {
         case embedded
         case searching
@@ -197,60 +203,77 @@ extension YPlayerWebViewViewController: WKNavigationDelegate,WKUIDelegate {
 
 extension YPlayerWebViewViewController {
     
+    /// Returns the elapsed time in seconds since the video started playing.
     func getCurrentTime(handler: @escaping (Float?) -> Void) {
         self.evaluatePlayerCommand("getCurrentTime()") { time in
             handler(time as? Float)
         }
     }
     
-    func seek(time: Float) {
+    /// Seeks to a specified time in the video. If the player is paused when the function is called, it will remain paused. If the function is called from another state (playing, video cued, etc.), the player will play the video.
+    func seekTo(time: Float) {
         self.evaluatePlayerCommand("seekTo(\(time), \(true))")
     }
     
+    /// Mutes the player.
     func mute() {
         self.evaluatePlayerCommand("mute()")
     }
     
+    /// Unmutes the player.
     func unMute() {
         self.evaluatePlayerCommand("unMute()")
     }
     
+    /// Returns true if the player is muted, false if not.
     func isMuted(handler: @escaping (Bool?) -> Void) {
         self.evaluatePlayerCommand("isMuted()") { isMuted in
             handler(isMuted as? Bool)
         }
     }
     
-    func setVolume(volume: Float) {
+    /// Sets the volume. Accepts an integer between 0 and 100.
+    func setVolume(volume: Int) {
         self.evaluatePlayerCommand("setVolume(\(volume))")
     }
     
-    func getVolume(handler: @escaping (Float?) -> Void) {
+    /// Returns the player's current volume, an integer between 0 and 100. Note that getVolume() will return the volume even if the player is muted.
+    func getVolume(handler: @escaping (Int?) -> Void) {
         self.evaluatePlayerCommand("getVolume()") { volume in
-            handler(volume as? Float)
+            handler(volume as? Int)
         }
     }
 
+    /// This function sets the suggested playback rate for the current video. If the playback rate changes, it will only change for the video that is already cued or being played. If you set the playback rate for a cued video, that rate will still be in effect when the playVideo function is called or the user initiates playback directly through the player controls. In addition, calling functions to cue or load videos or playlists (cueVideoById, loadVideoById, etc.) will reset the playback rate to 1.
     func setPlaybackRate(value: Float) {
         self.evaluatePlayerCommand("setPlaybackRate(\(value))")
     }
     
+    /// This function retrieves the playback rate of the currently playing video. The default playback rate is 1, which indicates that the video is playing at normal speed. Playback rates may include values like 0.25, 0.5, 1, 1.5, and 2.
     func getPlaybackRate(handler: @escaping (Float?) -> Void) {
         self.evaluatePlayerCommand("getPlaybackRate()") { value in
             handler(value as? Float)
         }
     }
     
+    /// - This function returns the set of playback rates in which the current video is available. The default value is 1, which indicates that the video is playing in normal speed.
+    /// - The function returns an array of numbers ordered from slowest to fastest playback speed. Even if the player does not support variable playback speeds, the array should always contain at least one value (1).
     func getAvailablePlaybackRates(handler: @escaping ([Float]?) -> Void) {
         self.evaluatePlayerCommand("getAvailablePlaybackRates()") { value in
             handler(value as? [Float])
         }
     }
     
+    /// - This function indicates whether the video player should continuously play a playlist or if it should stop playing after the last video in the playlist ends. The default behavior is that playlists do not loop.
+    /// - This setting will persist even if you load or cue a different playlist, which means that if you load a playlist, call the setLoop function with a value of true, and then load a second playlist, the second playlist will also loop.
+    /// - The required loopPlaylists parameter identifies the looping behavior.
+    /// - If the parameter value is true, then the video player will continuously play playlists. After playing the last video in a playlist, the video player will go back to the beginning of the playlist and play it again.
+    /// - If the parameter value is false, then playbacks will end after the video player plays the last video in a playlist
     func setLoop(value: Float) {
         self.evaluatePlayerCommand("setLoop(\(value))")
     }
     
+    /// This function indicates whether a playlist's videos should be shuffled so that they play back in an order different from the one that the playlist creator designated. If you shuffle a playlist after it has already started playing, the list will be reordered while the video that is playing continues to play. The next video that plays will then be selected based on the reordered list.
     func setShuffle(value: Float) {
         self.evaluatePlayerCommand("setShuffle(\(value))")
     }
@@ -262,24 +285,61 @@ extension YPlayerWebViewViewController {
         }
     }
     
-    /*
-     
-     Returns a number between 0 and 1 that specifies the percentage of the video that the player shows as buffered. This method returns a more reliable number than the now-deprecated getVideoBytesLoaded and getVideoBytesTotal methods.
-     player.getPlayerState():Number
-     Returns the state of the player. Possible values are:
-     -1 – unstarted
-     0 – ended
-     1 – playing
-     2 – paused
-     3 – buffering
-     5 – video cued
-     player.getCurrentTime():Number
-
-     player.getDuration():Number
-     player.getVideoEmbedCode():String
-
-     */
+    enum PlayerState: Int {
+        case unstarted = -1
+        case ended = 1
+        case playing = 2
+        case paused = 3
+        case buffering = 4
+        case video_cued = 5
+    }
+    
+    /// Returns the state of the player. Possible values are:
+    /// - -1 – unstarted
+    /// - 0 – ended
+    /// - 1 – playing
+    /// - 2 – paused
+    /// - 3 – buffering
+    /// - 5 – video cued
+    func getPlayerState(handler: @escaping (PlayerState) -> Void) {
+        self.evaluatePlayerCommand("getPlayerState()") { value in
+            let value = value as? Int
+            let state = PlayerState(rawValue: value ?? -1)
+            handler(state ?? .unstarted)
+        }
+    }
+    
+    /// Returns the duration in seconds of the currently playing video. Note that getDuration() will return 0 until the video's metadata is loaded, which normally happens just after the video starts playing.
+    func getDuration(handler: @escaping (Float?) -> Void) {
+        self.evaluatePlayerCommand("getDuration()") { value in
+            handler(value as? Float)
+        }
+    }
+    
+    /// Returns the embed code for the currently loaded/playing video.
+    func getVideoEmbedCode(handler: @escaping (Float?) -> Void) {
+        self.evaluatePlayerCommand("getVideoEmbedCode()") { value in
+            handler(value as? Float)
+        }
+    }
+    
+    /// Plays the currently cued/loaded video. The final player state after this function executes will be playing (1).
+    func playVideo() {
+        self.evaluatePlayerCommand("playVideo()")
+    }
+    
+    /// Stops and cancels loading of the current video. This function should be reserved for rare situations when you know that the user will not be watching additional video in the player. If your intent is to pause the video, you should just call the pauseVideo function. If you want to change the video that the player is playing, you can call one of the queueing functions without calling stopVideo first.
     func stopVideo() {
+        self.evaluatePlayerCommand("stopVideo()")
+    }
+    
+    /// Pauses the currently playing video. The final player state after this function executes will be paused (2) unless the player is in the ended (0) state when the function is called, in which case the player state will not change.
+    func pauseVideo() {
+        self.evaluatePlayerCommand("pauseVideo()")
+    }
         
+    /// This method returns the DOM node for the embedded <iframe>.
+    func getIframe() {
+        self.evaluatePlayerCommand("getIframe()")
     }
 }
