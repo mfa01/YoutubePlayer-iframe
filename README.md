@@ -14,6 +14,9 @@ Add to info plist
 
 ## Open youtube video with id
 
+![](video2.gif)
+
+
 ```sh
     let vc = YPlayerWebViewViewController.initPlayer(delegate: self)
     let videoPresenetation = VideoPlayerPresentaion(videoId: "668nUCeBHyY")
@@ -34,6 +37,10 @@ Add to info plist
  - var modestbranding = 0 // show youtube colors
  
 ## Open youtube with searched text
+
+![](video1.gif)
+
+
 ```sh
     let vc = YPlayerWebViewViewController.initPlayer(delegate: nil)
     vc.webviewType = .searching

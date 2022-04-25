@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func openSampleVideo(_ sender: UIButton) {
-        let vc = YPlayerWebViewViewController(nibName: "WebViewViewController", bundle: nil)
+        let vc = YPlayerWebViewViewController.initPlayer(delegate: nil)
         vc.webviewType = .searching
         
         self.present(vc, animated: true) {
