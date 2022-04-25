@@ -13,9 +13,10 @@
 		183456CF2816E05500828163 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 183456CD2816E05500828163 /* Main.storyboard */; };
 		183456D12816E05600828163 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 183456D02816E05600828163 /* Assets.xcassets */; };
 		183456D42816E05600828163 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 183456D22816E05600828163 /* LaunchScreen.storyboard */; };
-		183456E02816E08800828163 /* WebViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183456DC2816E08800828163 /* WebViewViewController.xib */; };
-		183456E12816E08800828163 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183456DD2816E08800828163 /* WebViewViewController.swift */; };
+		183456E02816E08800828163 /* YPlayerWebViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183456DC2816E08800828163 /* YPlayerWebViewViewController.xib */; };
+		183456E12816E08800828163 /* YPlayerWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183456DD2816E08800828163 /* YPlayerWebViewViewController.swift */; };
 		183456E52816E7B700828163 /* VideoPlayerPresentaion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183456E42816E7B700828163 /* VideoPlayerPresentaion.swift */; };
+		183456E72817446300828163 /* YPlayerBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183456E62817446300828163 /* YPlayerBaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +28,10 @@
 		183456D02816E05600828163 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		183456D32816E05600828163 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		183456D52816E05600828163 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		183456DC2816E08800828163 /* WebViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewViewController.xib; sourceTree = "<group>"; };
-		183456DD2816E08800828163 /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
+		183456DC2816E08800828163 /* YPlayerWebViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YPlayerWebViewViewController.xib; sourceTree = "<group>"; };
+		183456DD2816E08800828163 /* YPlayerWebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YPlayerWebViewViewController.swift; sourceTree = "<group>"; };
 		183456E42816E7B700828163 /* VideoPlayerPresentaion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerPresentaion.swift; sourceTree = "<group>"; };
+		183456E62817446300828163 /* YPlayerBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YPlayerBaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +79,9 @@
 		183456DB2816E08800828163 /* WebviewController */ = {
 			isa = PBXGroup;
 			children = (
-				183456DC2816E08800828163 /* WebViewViewController.xib */,
-				183456DD2816E08800828163 /* WebViewViewController.swift */,
+				183456DC2816E08800828163 /* YPlayerWebViewViewController.xib */,
+				183456DD2816E08800828163 /* YPlayerWebViewViewController.swift */,
+				183456E62817446300828163 /* YPlayerBaseViewController.swift */,
 				183456E42816E7B700828163 /* VideoPlayerPresentaion.swift */,
 			);
 			path = WebviewController;
@@ -144,7 +147,7 @@
 			files = (
 				183456D42816E05600828163 /* LaunchScreen.storyboard in Resources */,
 				183456D12816E05600828163 /* Assets.xcassets in Resources */,
-				183456E02816E08800828163 /* WebViewViewController.xib in Resources */,
+				183456E02816E08800828163 /* YPlayerWebViewViewController.xib in Resources */,
 				183456CF2816E05500828163 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,7 +162,8 @@
 				183456E52816E7B700828163 /* VideoPlayerPresentaion.swift in Sources */,
 				183456CC2816E05500828163 /* ViewController.swift in Sources */,
 				183456C82816E05500828163 /* AppDelegate.swift in Sources */,
-				183456E12816E08800828163 /* WebViewViewController.swift in Sources */,
+				183456E12816E08800828163 /* YPlayerWebViewViewController.swift in Sources */,
+				183456E72817446300828163 /* YPlayerBaseViewController.swift in Sources */,
 				183456CA2816E05500828163 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
