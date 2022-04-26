@@ -2,6 +2,11 @@
 
 Youtube player is to run and play youtube videos using webview, it will show webview as native component, so you can do many things, like seeking time, get current time, play video with options, etc..
 
+### Add Pod   
+```sh
+pod 'YPlayer'
+```
+
 ## Requerments
 Add to info plist
 ```sh
