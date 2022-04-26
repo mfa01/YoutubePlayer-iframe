@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18161724281817E400624048 /* YPlayerVideoPlayerPresentaion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18161723281817E400624048 /* YPlayerVideoPlayerPresentaion.swift */; };
+		181617262818199800624048 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 181617252818199800624048 /* LICENSE.md */; };
 		183456C82816E05500828163 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183456C72816E05500828163 /* AppDelegate.swift */; };
 		183456CA2816E05500828163 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183456C92816E05500828163 /* SceneDelegate.swift */; };
 		183456CC2816E05500828163 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183456CB2816E05500828163 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		18161723281817E400624048 /* YPlayerVideoPlayerPresentaion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YPlayerVideoPlayerPresentaion.swift; sourceTree = "<group>"; };
+		181617252818199800624048 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = SOURCE_ROOT; };
 		183456C42816E05500828163 /* YoutubePlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoutubePlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		183456C72816E05500828163 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		183456C92816E05500828163 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				183456C72816E05500828163 /* AppDelegate.swift */,
 				183456C92816E05500828163 /* SceneDelegate.swift */,
 				183456CB2816E05500828163 /* ViewController.swift */,
+				181617252818199800624048 /* LICENSE.md */,
 				183456CD2816E05500828163 /* Main.storyboard */,
 				183456D02816E05600828163 /* Assets.xcassets */,
 				183456D22816E05600828163 /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				181617262818199800624048 /* LICENSE.md in Resources */,
 				183456D42816E05600828163 /* LaunchScreen.storyboard in Resources */,
 				183456D12816E05600828163 /* Assets.xcassets in Resources */,
 				183456E02816E08800828163 /* YPlayerWebViewViewController.xib in Resources */,
