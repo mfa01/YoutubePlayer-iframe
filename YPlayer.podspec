@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YPlayer'
-  s.version          = '1.0.4'
+  s.version          = '1.0.5'
   s.summary          = 'Webview for youtube videos to playe video or search by youtube for a video'
 
 # This description is used to generate tags and improve search results.
