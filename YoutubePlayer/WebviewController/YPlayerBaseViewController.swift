@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class YPlayerBaseViewController: UIViewController {
+public class YPlayerBaseViewController: UIViewController {
     
     private lazy var loadingView: UIActivityIndicatorView = {
         let loginSpinner = UIActivityIndicatorView(style: .large)
