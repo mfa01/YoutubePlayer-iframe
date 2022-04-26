@@ -5,6 +5,7 @@ Youtube player is to run and play youtube videos using webview, it will show web
 ### Add Pod   
 ```sh
 pod 'YPlayer'
+import YPlayer
 ```
 
 ## Requerments

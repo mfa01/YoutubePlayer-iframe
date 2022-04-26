@@ -44,7 +44,7 @@ class ViewController: UIViewController {
     @IBAction func openVideoWithId(_ sender: UIButton) {
         let vc = YPlayerWebViewViewController.initPlayer(delegate: self)
         
-        var videoPresenetation = VideoPlayerPresentaion(videoId: "668nUCeBHyY")
+        var videoPresenetation = YPlayerVideoPlayerPresentaion(videoId: "668nUCeBHyY")
         videoPresenetation.autoplay = 0
         videoPresenetation.loop = 1
         videoPresenetation.modestbranding = 1
