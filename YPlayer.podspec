@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YPlayer'
-  s.version          = '1.0.6'
+  s.version          = '1.0.7'
   s.summary          = 'Webview for youtube videos to playe video or search by youtube for a video'
 
 # This description is used to generate tags and improve search results.
@@ -21,8 +21,7 @@ Pod::Spec.new do |s|
 Youtube player is to run and play youtube videos using webview, it will show webview as native component, so you can do many things, like seeking time, get current time, play video with options, etc..
                        DESC
 
-  # s.homepage         = 'https://github.com/mfa01/YoutubePlayer-iframe'
-  s.homepage         = 'https://cocoapods.org/pods/YPlayer'
+  s.homepage         = 'https://github.com/mfa01/YoutubePlayer-iframe'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Mohammad Alabed' => 'mfa01@yahoo.com' }
